@@ -14,6 +14,7 @@ fbuserNameObj =
 	'Hedvig Elisabeth Andersland': 'hedvig.andersland'
 	'Ida Maria Dahr': 'ida.m.nygaard'
 	'Torjus Nafstad': 'torjus.nafstad'
+	'Nicolai Gulbrandsøy': 'niccoboss'
 
 cssOptionsObj = 
 	'margin-bottom': '-5px'
@@ -26,17 +27,21 @@ cssOptionsObj =
 createImageGridHtml = (userNameObj) ->
 	graphFBAddress = 'https://graph.facebook.com/'
 	imageArray = []
+	styling = "float: right;"
 	for fullName, username of userNameObj
-		imageArray.push "<img src='#{graphFBAddress}#{username}/picture#{fbImageOptions}' title='#{fullName}'>"
+		imageArray.push "<img src='#{graphFBAddress}#{username}/picture#{fbImageOptions}' title='#{fullName}' style='#{styling}'>"
 	resultStr = imageArray.join('')
-	resultStr = "<div id='banner'>#{resultStr}</div>"
+	resultStr = "<div id='banner' class='cf'>#{resultStr}</div>"
 
 styleBanner = (divId) ->
-	$("#{divId}").css 'width', '600px'
+	#851px x 315 facebook banner size
+	$("#{divId}").css 'width', '851px'
+
 
 $(document).ready ->
   console.log 'Starting script'
   console.log fbuserNameObj
   $('#banner').replaceWith(createImageGridHtml(fbuserNameObj))
-  styleBanner('#banner')
   $('#bannerSource').text(createImageGridHtml(fbuserNameObj))
+  
+  styleBanner('#banner')	

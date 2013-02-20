@@ -16,7 +16,8 @@
     'Bjørnar Fjeldstad': '739398715',
     'Hedvig Elisabeth Andersland': 'hedvig.andersland',
     'Ida Maria Dahr': 'ida.m.nygaard',
-    'Torjus Nafstad': 'torjus.nafstad'
+    'Torjus Nafstad': 'torjus.nafstad',
+    'Nicolai Gulbrandsøy': 'niccoboss'
   };
 
   cssOptionsObj = {
@@ -29,27 +30,28 @@
   };
 
   createImageGridHtml = function(userNameObj) {
-    var fullName, graphFBAddress, imageArray, resultStr, username;
+    var fullName, graphFBAddress, imageArray, resultStr, styling, username;
     graphFBAddress = 'https://graph.facebook.com/';
     imageArray = [];
+    styling = "float: right;";
     for (fullName in userNameObj) {
       username = userNameObj[fullName];
-      imageArray.push("<img src='" + graphFBAddress + username + "/picture" + fbImageOptions + "' title='" + fullName + "'>");
+      imageArray.push("<img src='" + graphFBAddress + username + "/picture" + fbImageOptions + "' title='" + fullName + "' style='" + styling + "'>");
     }
     resultStr = imageArray.join('');
-    return resultStr = "<div id='banner'>" + resultStr + "</div>";
+    return resultStr = "<div id='banner' class='cf'>" + resultStr + "</div>";
   };
 
   styleBanner = function(divId) {
-    return $("" + divId).css('width', '600px');
+    return $("" + divId).css('width', '851px');
   };
 
   $(document).ready(function() {
     console.log('Starting script');
     console.log(fbuserNameObj);
     $('#banner').replaceWith(createImageGridHtml(fbuserNameObj));
-    styleBanner('#banner');
-    return $('#bannerSource').text(createImageGridHtml(fbuserNameObj));
+    $('#bannerSource').text(createImageGridHtml(fbuserNameObj));
+    return styleBanner('#banner');
   });
 
 }).call(this);
