@@ -1,5 +1,3 @@
-#What do I need?
+#Usecase
+Just a little project i created in order to automatically create a grid of images to be used as a Facebook page banner. 
 
-Something that automatically creates a grid of images, that links them to relevant Facebook profiles. Need to be able to export html that contains stylesheets.
-
-#Resources
